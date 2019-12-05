@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>eShop</title>
+    <link rel="stylesheet" href="reset.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body { background-color: #fdf1ec; }
+        .header {
+            width: 1000px;
+            margin: 0 auto 20px;
+            border-bottom: 1px solid #d2d2d2;
+            padding: 10px 0 10px 0;
+        }
+        .cart-button {
+            display: block;
+            margin: 0 0 0 auto;
+            height: 30px;
+            width: 110px;
+            border: transparent;
+            border-radius: 60px;
+            text-transform: uppercase;
+            color: #ffffff;
+            background-color: #9cebd5;
+        }
+        .cart-button:hover { background-color: #79b0a1;  }
+        .goods-list {
+            margin: 0 auto;
+            width: 940px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .goods-item {
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 140px;
+            padding: 10px;
+            margin: 0 20px 20px 0;
+            background-color: #ffffff;
+            box-shadow: 0px 14px 32px 0px rgba(0, 0, 0, 0.15);
+        }
+        .goods-item:nth-child(6n) { margin-right: 0;  }
+        .card-photo {
+            display: block;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border: 1px solid #d2d2d2;
+        }
+        .card-title {
+            font-size: 24px;
+            color: #474747;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        .card-price {
+            font-size: 22px;
+            font-style: italic;
+            color: #474747;
+        }
+    </style>
+</head>
+
+<!-- 
+1. Добавьте стили для верхнего меню, товара,
+   списка товаров и кнопки вызова корзины.
+2. Добавьте значения по умолчанию для аргументов функции.
+   Как можно упростить или сократить запись функций?
+3. *Сейчас после каждого товара на странице выводится запятая.
+   Из-за чего это происходит? Как это исправить? -->
+
+<body>
+    <header class="header">
+        <button class="cart-button">Корзина</button>
+    </header>
+    <main>
+        <div class="goods-list"></div>
+    </main>
+    <script src="index.js"></script>
+</body>
+
+</html>
