@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replacing quotes</title>
+    <link rel="stylesheet" href="quotes.css">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h3>Болшой текст для примера:</h3>
+            <p>"Of course," he said, "you're a new neighbour, aren't you?"<br>
+                "And you must be"-she raised her eyes from his professional symbols-"the fireman.<br>
+                Her voice trailed off.<br>
+                "How oddly you say that."<br>
+                "I'd-I'd have known it with my eyes shut," she said, slowly.<br>
+                "What-the smell of kerosene?<br>
+                "My wife always complains," he laughed.<br>
+                "You never wash it off completely."<br>
+                "No, you don't," she said, in awe.</p>
+        </div>
+        <div>
+            <h3>Исходный текст для правки:</h3>
+            <textarea class="regexp" id="source"></textarea>
+        </div>
+        <div>
+            <h3>Исправленный текст:</h3>
+            <textarea class="regexp-out" readonly id="output"></textarea>
+        </div>
+    </div>
+
+    <script src="quotes.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FORM, 3*</title>
+    <link rel="stylesheet" href="form.css">
+    <script src="index.js" async></script>
+</head>
+
+<body>
+    <form class="form">
+        <label id="name">
+            <input type="text" name="name" class="inputField">
+            <span class="desc">Имя должно содержать только буквы</span>
+        </label>
+        <label id="phone">
+            <input type="tel" name="phone" class="inputField">
+            <span class="desc">Телефон должен иметь вид +7(000)000-0000</span>
+        </label>
+        <label id="email">
+            <input type="email" name="email" class="inputField">
+            <span class="desc">E-mail должен иметь вид mymail@mail.ru, или my.mail@mail.ru, или my-mail@mail.ru</span>
+        </label>
+        <label id="message">
+            <textarea name="message" class="inputField"></textarea>
+            <span class="desc">Текст произвольный, обязателен</span>
+        </label>
+        <button class="button">Отправить</button>
+    </form>
+
+</body>
+
+</html>
