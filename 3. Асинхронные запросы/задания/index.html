@@ -8,186 +8,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>e-Shop</title>
     <link rel="stylesheet" href="reset.css">
-    <style>
-        * {
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        body {
-            background-color: #fdf1ec;
-        }
-
-        .header {
-            width: 1000px;
-            margin: 0 auto 20px;
-            border-bottom: 1px solid #d2d2d2;
-            padding: 10px 0 10px 0;
-        }
-
-        .cart-button {
-            display: block;
-            margin: 0 0 0 auto;
-            height: 30px;
-            width: 110px;
-            border: transparent;
-            border-radius: 60px;
-            text-transform: uppercase;
-            color: #ffffff;
-            background-color: #9cebd5;
-        }
-
-        .cart-button:hover {
-            background-color: #79b0a1;
-        }
-
-        .goods-list {
-            margin: 0 auto;
-            width: 940px;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .goods-item {
-            border-radius: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 140px;
-            padding: 10px;
-            margin: 0 20px 20px 0;
-            background-color: #ffffff;
-            box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.15);
-        }
-
-        .goods-item:nth-child(6n) {
-            margin-right: 0;
-        }
-
-        .card-photo {
-            display: block;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            border: 1px solid #d2d2d2;
-        }
-
-        .card-title {
-            font-size: 24px;
-            color: #474747;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .card-price {
-            font-size: 18px;
-            color: #474747;
-        }
-
-        .total-amount {
-            margin: 0 auto;
-            min-width: 140px;
-            max-width: 940px;
-            padding: 10px;
-            color: #474747;
-        }
-
-        .buy-btn {
-            margin-top: 5px;
-            background-color: #2f2a2d;
-            padding: 10px 20px;
-            border: 1px solid transparent;
-            background-color: #79b0a1;
-            color: #ffffff;
-            border-radius: 5px;
-            transition: all ease-in-out .4s;
-            cursor: pointer;
-        }
-
-        .inc-btn,
-        .dec-btn,
-        .clean-btn {
-            background-color: #2f2a2d;
-            padding: 0;
-            border: 1px solid transparent;
-            color: #fafafa;
-            border-radius: 5px;
-            transition: all ease-in-out .4s;
-            cursor: pointer;
-            width: 20px;
-            height: 20px;
-            text-align: center;
-            line-height: 20px;
-            font-size: 20px;
-
-            display: block;
-            margin: 0 0 0 auto;
-            
-            border: transparent;
-
-            background-color: #9cebd5;
-        }
-
-        .cart {
-            position: relative;
-        }
-
-        .cart-block {
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.62);
-            border-radius: 5px;
-            box-sizing: border-box;
-            position: fixed;
-            top: 110px;
-            right: 50px;
-            background-color: white;
-            padding: 20px;
-            color: black;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .invisible {
-            display: none;
-        }
-
-        .cart-block:before {
-            content: '';
-            width: 0;
-            height: 0;
-            position: absolute;
-            top: -10px;
-            right: 35px;
-            border-left: 10px solid transparent;
-            border-right: 10px solid transparent;
-            border-bottom: 10px solid white;
-        }
-
-        .cart-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .cart-item-btnblock {
-            width: 90px;
-            margin-top: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-left: 10px;
-        }
-    </style>
+    <link rel="stylesheet" href="index.css">
+    <style></style>
 </head>
 
 <body>
+
     <header class="header">
         <button class="cart-button">Корзина</button>
         <div class="cart-list invisible"></div>
     </header>
+
     <main>
-        <div class="goods-list products"></div>
+        <div class="goods-list"></div>
     </main>
 
     <script src="index.js"></script>
+
 </body>
 
 </html>

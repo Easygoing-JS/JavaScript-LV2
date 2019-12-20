@@ -36,7 +36,7 @@ class CartItem {
                 <img class="card-photo" src="${this.photo}" alt="${this.title}" width="120" height="80">
                     <h3 class="card-title">${this.title}</h3>
                     <p class="card-price">$${this.price}</p>
-                    <button class="buy-btn" data-id="${this.id}">В корзину</button>
+                    <button class="buy-button" data-id="${this.id}">В корзину</button>
                 </div>`;
     }
 }
@@ -125,22 +125,21 @@ class Cart {
         let cartBlock = document.querySelector(".cart-list");
         cartBlock.innerHTML = "";
         if (this.goods.length != 0) {
-            cartBlock.innerHTML += `В корзине: <hr>`;
+            cartBlock.innerHTML += `<span class="cartHeadline">В корзине:</span>`;
             let htmlStr = "";
             for (let i = 0; i < this.goods.length; i++) {
-                htmlStr += `<div class="cart-item"><div class="cart-item_desc"><p>${
-          this.goods[i][0].product_name
-        }: ${this.goods[i][0].price * this.goods[i][1]}
-          </p></div><div class="cart-item-btnblock"><button class="inc-btn" data-id="${
-            this.goods[i][0].id_product
-          }">+</button><button class="dec-btn" data-id="${
-          this.goods[i][0].id_product
-        }">-</button><button class="clean-btn" data-id="${
-          this.goods[i][0].id_product
-        }">x</button></div></div>`;
+                htmlStr += `<div class="cart-item"><div class="cart-item_desc">
+                            <p>${this.goods[i][0].product_name}: ${this.goods[i][0].price * this.goods[i][1]}</p>
+                            </div>
+                            <div class="cart-item-buttonblock">
+                            <button class="inc-button" data-id="${this.goods[i][0].id_product}">&#9650;</button>
+                            <button class="dec-button" data-id="${this.goods[i][0].id_product}">&#9660;</button>
+                            <button class="clean-button" data-id="${this.goods[i][0].id_product}">&#8855;</button>
+                            </div>
+                            </div>`;
             }
             cartBlock.innerHTML += htmlStr;
-            cartBlock.innerHTML += `<hr> Итоговая сумма: ${this._calcTotal()}`;
+            cartBlock.innerHTML += `Итоговая сумма: ${this._calcTotal()}`;
         } else cartBlock.innerHTML += `Корзина пуста</p>`;
     }
 }
@@ -148,7 +147,7 @@ class Cart {
 class Listeners {
     constructor(list, cart) {
         this.allGoods = document.querySelector(".goods-list");
-        this.cartBtn = document.querySelector(".cart-button");
+        this.cartbutton = document.querySelector(".cart-button");
         this.cartBody = document.querySelector(".cart-list");
         this.list = list;
         this.cart = cart;
@@ -162,14 +161,14 @@ class Listeners {
     }
 
     _listenerForCartBody() {
-        this.cartBtn.addEventListener("click", () => {
+        this.cartbutton.addEventListener("click", () => {
             document.querySelector(".cart-list").classList.toggle("invisible");
         });
     }
 
     _listenerForGoods() {
         this.allGoods.addEventListener("click", evt => {
-            if (evt.target.classList.contains("buy-btn")) {
+            if (evt.target.classList.contains("buy-button")) {
                 this.list.goods.forEach(element => {
                     if (element.id_product === +evt.target.dataset["id"]) {
                         this.cart._incGood(element);
@@ -181,19 +180,19 @@ class Listeners {
 
     _listenerForCartItems() {
         this.cartBody.addEventListener("click", evt => {
-            if (evt.target.classList.contains("inc-btn")) {
+            if (evt.target.classList.contains("inc-button")) {
                 this.list.goods.forEach(element => {
                     if (element.id_product === +evt.target.dataset["id"]) {
                         this.cart._incGood(element);
                     }
                 });
-            } else if (evt.target.classList.contains("dec-btn")) {
+            } else if (evt.target.classList.contains("dec-button")) {
                 this.list.goods.forEach(element => {
                     if (element.id_product === +evt.target.dataset["id"]) {
                         this.cart._decGood(element);
                     }
                 });
-            } else if (evt.target.classList.contains("clean-btn")) {
+            } else if (evt.target.classList.contains("clean-button")) {
                 this.list.goods.forEach(element => {
                     if (element.id_product === +evt.target.dataset["id"]) {
                         this.cart._clean(element);
@@ -257,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 //                 <div class="desc">
 //                     <h3>${this.title}</h3>
 //                     <p>${this.price} \u20bd</p>
-//                     <button class="buy-btn" data-id="${this.id}">Купить</button>
+//                     <button class="buy-button" data-id="${this.id}">Купить</button>
 //                 </div>
 //             </div>`;
 //     }
@@ -353,11 +352,11 @@ document.addEventListener('DOMContentLoaded', () => {
 //                 htmlStr += `<div class="cart-item"><div class="cart-item_desc"><p>${
 //           this.goods[i][0].product_name
 //         }: ${this.goods[i][0].price * this.goods[i][1]}
-//           </p></div><div class="cart-item-btnblock"><button class="inc-btn" data-id="${
+//           </p></div><div class="cart-item-buttonblock"><button class="inc-button" data-id="${
 //             this.goods[i][0].id_product
-//           }">+</button><button class="dec-btn" data-id="${
+//           }">+</button><button class="dec-button" data-id="${
 //           this.goods[i][0].id_product
-//         }">-</button><button class="clean-btn" data-id="${
+//         }">-</button><button class="clean-button" data-id="${
 //           this.goods[i][0].id_product
 //         }">x</button></div></div>`;
 //             }
@@ -370,7 +369,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // class Listeners { 
 //     constructor(list, cart) {
 //         this.allGoods = document.querySelector(".goods-list");
-//         this.cartBtn = document.querySelector(".cart-button");
+//         this.cartbutton = document.querySelector(".cart-button");
 //         this.cartBody = document.querySelector(".cart-block");
 //         this.list = list;
 //         this.cart = cart;
@@ -384,14 +383,14 @@ document.addEventListener('DOMContentLoaded', () => {
 //     }
 
 //     _listenerForCartBody() {
-//         this.cartBtn.addEventListener("click", () => {
+//         this.cartbutton.addEventListener("click", () => {
 //             document.querySelector(".cart-block").classList.toggle("invisible");
 //         });
 //     }
 
 //     _listenerForGoods() {
 //         this.allGoods.addEventListener("click", evt => {
-//             if (evt.target.classList.contains("buy-btn")) {
+//             if (evt.target.classList.contains("buy-button")) {
 //                 this.list.goods.forEach(element => {
 //                     if (element.id_product === +evt.target.dataset["id"]) {
 //                         this.cart._incGood(element);
@@ -403,19 +402,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //     _listenerForCartItems() {
 //         this.cartBody.addEventListener("click", evt => {
-//             if (evt.target.classList.contains("inc-btn")) {
+//             if (evt.target.classList.contains("inc-button")) {
 //                 this.list.goods.forEach(element => {
 //                     if (element.id_product === +evt.target.dataset["id"]) {
 //                         this.cart._incGood(element);
 //                     }
 //                 });
-//             } else if (evt.target.classList.contains("dec-btn")) {
+//             } else if (evt.target.classList.contains("dec-button")) {
 //                 this.list.goods.forEach(element => {
 //                     if (element.id_product === +evt.target.dataset["id"]) {
 //                         this.cart._decGood(element);
 //                     }
 //                 });
-//             } else if (evt.target.classList.contains("clean-btn")) {
+//             } else if (evt.target.classList.contains("clean-button")) {
 //                 this.list.goods.forEach(element => {
 //                     if (element.id_product === +evt.target.dataset["id"]) {
 //                         this.cart._clean(element);
