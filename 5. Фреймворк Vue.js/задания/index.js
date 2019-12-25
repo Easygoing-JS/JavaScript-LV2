@@ -11,6 +11,16 @@ const app = new Vue({
     isVisibleCart: false
   },
 
+  computed: {
+    calcTotalPrice() {
+      return this.cart.reduce((total, el) => total += el.price * el.quantity, 0);
+    },
+
+    calcTotalQuantity() {
+      return this.cart.reduce((total, el) => total += el.quantity, 0);
+    }
+  },
+
   methods: {
     makeGETRequest(url) {
       return new Promise((resolve, reject) => {
@@ -40,16 +50,28 @@ const app = new Vue({
       });
     },
 
+    filterGoods() {
+      const regexp = new RegExp(this.searchLine, 'i');
+      this.filteredGoods = this.goods.filter((good) => regexp.test(good.product_name));
+    },
+
+    cleanForm() {
+      this.searchLine = '';
+    },
+
+    toggleCartVisibility() {
+      this.isVisibleCart = !this.isVisibleCart;
+    },
+
     incGood(good) {
       let goodIndex = this.cart.findIndex(el => el.id_product === good.id_product);
 
       if (goodIndex != -1) {
         this.cart[goodIndex].quantity++;
-      } else {
+      } else { // добавление товара кнопкой Купить
         let cartItem = Object.assign({}, good);
         Vue.set(cartItem, 'quantity', 1);
         this.cart.push(cartItem);
-
       }
     },
 
@@ -69,19 +91,7 @@ const app = new Vue({
       let goodIndex = this.cart.findIndex(el => el.id_product === good.id_product);
 
       if (goodIndex != -1) this.cart.splice(goodIndex, 1);
-    },
-
-    calcTotalPrice() {
-      return this.cart.reduce((total, el) => total += el.price * el.quantity, 0);
-    },
-
-    calcTotalQuantity() {
-      return this.cart.reduce((total, el) => total += el.quantity, 0);
-    },
-
-    filterGoods() { 
-      // метод фильтрации, сделаю позже
-    },
+    }
   },
 
   async mounted() {

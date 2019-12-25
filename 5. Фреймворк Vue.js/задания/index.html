@@ -18,15 +18,16 @@
 
 		<header class="header">
 
-			<form class="search-form" id="myForm">
-				<input type="text" class="search-input" v-model="searchLine" />
-				<button class="search-button" @click="filterGoods()">Искать</button>
+			<form class="search-form" @submit.prevent="filterGoods">
+				<input type="text" class="search-input" v-model.trim="searchLine" />
+				<button class="search-button">Искать</button>
+				<button class="clear-button" @click="cleanForm">Очистить</button>
 			</form>
 
-			<button class="cart-button" type="button" @click="isVisibleCart = !isVisibleCart">Корзина <span
-					class="button-quantity">{{ calcTotalQuantity() }}</span></button>
-			<div class="cart-wrp" v-if="isVisibleCart">
-				<div class="cart-list filled" v-if="cart.length">
+			<button class="cart-button" type="button" @click="toggleCartVisibility">Корзина <span
+					class="button-quantity">{{ calcTotalQuantity }}</span></button>
+			<div class="cart-wrapper" v-if="isVisibleCart">
+				<div class="cart-list filled" v-if="cart.length != 0">
 					<span class="cart-headline">В корзине:</span>
 					<div class="cart-item" v-for="good of cart" :key="good.id_product">
 						<div class="cart-item_desc">
@@ -38,8 +39,8 @@
 							<button class="clean-button" @click="cleanGood(good)">⊗</button>
 						</div>
 					</div>
-					<span class="cart-total-price">Итоговая сумма: {{ calcTotalPrice() }} руб.</span>
-					<span class="cart-total-quantity">Товаров в корзине: {{ calcTotalQuantity() }}</span>
+					<span class="cart-total-price">Итоговая сумма: {{ calcTotalPrice }} руб.</span>
+					<span class="cart-total-quantity">Товаров в корзине: {{ calcTotalQuantity }}</span>
 				</div>
 				<div class="cart-list not-filled" v-else>
 					В корзине пусто.
@@ -55,6 +56,7 @@
 					<p class="card-price">{{ good.price }} руб.</p>
 					<button class="buy-button" @click="incGood(good)">В корзину</button>
 				</div>
+				<div class="filtered-fail" v-if="filteredGoods.length == 0">Поиск не дал результатов.</div>
 			</div>
 			<div class="goods-list" v-else>
 				Нет данных о товарах.
