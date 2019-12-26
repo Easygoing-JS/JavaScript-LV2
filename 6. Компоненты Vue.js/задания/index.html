@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>e-Shop</title>
+	<link rel="stylesheet" href="reset.css">
+	<link rel="stylesheet" href="index.css">
+	<style>
+	</style>
+</head>
+
+<body>
+	<div id="app">
+
+		<header class="header">
+
+			<form class="search-form" @submit.prevent="filterGoods">
+				<input type="text" placeholder="Поиск по сайту" class="search-input" v-model.trim="searchLine" />
+				<button class="search-button">Искать</button>
+				<button class="clear-button" @click="clearForm">Очистить</button>
+			</form>
+
+			<button class="cart-button" type="button" @click="toggleCartVisibility">Корзина <span
+					class="button-quantity">{{ calcTotalQuantity }}</span></button>
+			<div class="cart-wrapper" v-if="isVisibleCart">
+				<div class="cart-list filled" v-if="cart.length != 0">
+					<span class="cart-headline">В корзине:</span>
+					<div class="cart-item" v-for="good of cart" :key="good.id_product">
+						<div class="cart-item_desc">
+							<p>{{ good.product_name }} [x{{ good.quantity }}] : {{ good.price * good.quantity }} руб.</p>
+						</div>
+						<div class="cart-item-buttonblock">
+							<button class="inc-button" @click="incGood(good)">▲</button>
+							<button class="dec-button" @click="decGood(good)">▼</button>
+							<button class="clean-button" @click="cleanGood(good)">⊗</button>
+						</div>
+					</div>
+					<span class="cart-total-price">Итоговая сумма: {{ calcTotalPrice }} руб.</span>
+					<span class="cart-total-quantity">Товаров в корзине: {{ calcTotalQuantity }}</span>
+				</div>
+				<div class="cart-list not-filled" v-else>
+					В корзине пусто.
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="goods-list" v-if="goods.length != 0">
+				<div class="goods-item" v-for="good in filteredGoods" :key="good.id_product">
+					<img :src="photo" :alt="good.product_name" class="card-photo" width="120" height="120">
+					<h3 class="card-title">{{ good.product_name }}</h3>
+					<p class="card-price">{{ good.price }} руб.</p>
+					<button class="buy-button" @click="incGood(good)">В корзину</button>
+				</div>
+				<div class="filtered-fail" v-if="filteredGoods.length == 0">Поиск не дал результатов.</div>
+			</div>
+			<div class="goods-list" v-else>
+				Нет данных о товарах.
+			</div>
+		</main>
+
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="index.js"></script>
+</body>
+
+</html>
