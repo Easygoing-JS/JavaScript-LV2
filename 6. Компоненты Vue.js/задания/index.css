@@ -21,11 +21,11 @@ body {
     display: flex;
     flex-direction: column;
     position: fixed;
-    /* z-index: 99; */
+    z-index: 99;
     left: 50%;
-    top: 120px;
+    top: 90px;
     background-color: #f0d4c8;
-    margin: -50px 0 -220px 0;
+    margin: 0 0 0 -110px;
 }
 
 .header {
@@ -132,10 +132,15 @@ main {
     margin: 0 20px 20px 0;
     background-color: #ffffff;
     box-shadow: 6px 6px 3px 0px rgba(0, 0, 0, 0.15);
+    border: 1px dashed transparent;
 }
 
 .goods-item:nth-child(6n) {
     margin-right: 0;
+}
+
+.search-active .goods-item {
+    border-color: #6fd4b8;
 }
 
 .card-photo {
@@ -193,6 +198,20 @@ main {
     background-color: #79b0a1;
 }
 
+.checkout-button {
+    margin-top: 5px;
+    background-color: #2f2a2d;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background-color: #ccc;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+}
+
 .inc-button,
 .dec-button,
 .clean-button {
@@ -211,7 +230,6 @@ main {
     margin: 0 0 0 auto;
     background-color: #9cebd5;
     text-transform: lowercase;
-
 }
 
 .inc-button:hover,
@@ -225,6 +243,7 @@ main {
 .clean-button:active {
     opacity: 0.5;
 }
+
 
 .invisible {
     display: none;

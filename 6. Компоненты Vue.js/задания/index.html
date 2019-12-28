@@ -20,7 +20,7 @@
       <search :search-line.sync="searchLine"></search>
       <cart ref="cart"></cart>
     </header>
-    <main>
+    <main :class="{['search-active']: isSearchActive}">
       <div class="notification error" v-if="error && error.length">
         &#9888; {{ error }} &#9888;
       </div>
