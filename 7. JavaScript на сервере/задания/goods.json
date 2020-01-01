@@ -1,0 +1,21 @@
+[
+  { "id": 0,
+    "title": "JavaScript. Профессиональные приемы программирования",
+    "path": "img/java-scr_prf_prm.jpg",
+    "price": 150
+  },
+  { "id": 1,
+    "title": "PHP настольная книга программиста",
+    "path": "img/php_nast_knig_prog.jpg",
+    "price": 50
+  },
+  { "id": 2,
+    "title": "Базы данных. Проектирование, реализация и сопровождение. Теория и практика",
+    "path": "img/bd_proekt_real_sopr.jpg",
+    "price": 350
+  },
+  { "id": 3,
+    "title": "JavaScript. Подробное руководство",
+    "price": 250
+  }
+]

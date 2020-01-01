@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог | Elbook.ru</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="header">
+
+                <ul class="menu">
+                    <li>
+                        <button class="cart-button" @click="toggleCartVisibility">
+                            <span class="textButton">Корзина</span>
+                        </button>
+                    </li>
+                </ul>
+                <search @search="filterGoods"></search>
+            </div>
+            <div class="content">
+                <div class="clear"></div>
+                <cart v-if="isVisibleCart" :goods="goodsInCart" @remove-from-cart="removeFromCart"></cart>
+                <goods-list :goods="filteredGoods" @add-to-cart="addToCart"></goods-list>
+
+                    <div id="catalog-empty" v-if="filteredGoods.length ==0"><h2>Нет данных</h2></div>
+
+                <div class="summ-item"></div>
+            </div>
+
+            <div class="footer"> <p>&copy; Все права защищены</p> </div>
+        </div>
+    </div>
+    <script src="vue.js"></script>
+    <script src="scriptForVue.js"></script>
+</body>
+
+</html>
